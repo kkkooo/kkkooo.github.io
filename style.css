@@ -29,7 +29,7 @@ img{display:block;}
 }
 .app_head img{display: inline;}
 .logo{text-align: right;margin:7.5% 7.5% 10.2% 0;}
-.logo_img{width: 125px;height:125px;background:url(../images/2.png) no-repeat -389px -131px;float: right;margin-left: 6%;}
+.logo_img{width: 125px;height:125px;background:url(http://www.lanrenmb.com/wap/662/images/2.png) no-repeat -389px -131px;float: right;margin-left: 6%;}
 .logo_txt1{line-height: 33px;padding-top: 14px;color: #ff6b00;font-size: 30px;font-family: "Arial"}
 .logo_txt2{line-height: 70px;color: #333;font-size: 60px;font-family: "黑体";}
 .logo_txt3{line-height: 22px;padding-top: 14px;color: #e50d0d;font-size: 22px;font-family: "Arial"}
@@ -44,7 +44,7 @@ img{display:block;}
 	box-shadow: 0px 10px 0px 0px rgb( 243, 242, 242 );
 }
 .btn:hover{text-decoration: none;}
-.btn .icon{width:58px;height:77px;display:inline-block;margin:auto;margin-right:4.6%;float: left;margin-left:20.4%; margin-top:5%;background:url(../images/2.png) no-repeat -185px -334px;}
+.btn .icon{width:58px;height:77px;display:inline-block;margin:auto;margin-right:4.6%;float: left;margin-left:20.4%; margin-top:5%;background:url(http://www.lanrenmb.com/wap/662/images/2.png) no-repeat -185px -334px;}
 .btn .btn_txt{height:61%;display:inline-block;margin:5% 0 0 0;float: left;}
 .btn .icon2{background-position: -185px -492px;}
 .btn .icon3{background-position: -185px -651px;}
@@ -59,7 +59,7 @@ img{display:block;}
 
 section{padding-top: 37px;}
 .sec{vertical-align: center;padding-bottom: 26px;margin-bottom: 26px;border-bottom: 1px solid #dedede;}
-.sec .icon{width:99px;height:99px;display:inline-block;margin:auto;margin-right:8.3%;float: left;margin-left:3%;background-image:url(../images/2.png);background-repeat:no-repeat;}
+.sec .icon{width:99px;height:99px;display:inline-block;margin:auto;margin-right:8.3%;float: left;margin-left:3%;background-image:url(http://www.lanrenmb.com/wap/662/images/2.png);background-repeat:no-repeat;}
 .sec .btn_txt{height:61%;display:block;margin:auto 0;zoom:1;overflow: hidden;}
 .sec .btn_txt1{font-size: 48px;line-height: 47px;height: 47px;margin-bottom: 12px;color: #ff6b00;}
 .sec .btn_txt2{line-height: 30px;font-size: 24px;}
@@ -72,7 +72,7 @@ section{padding-top: 37px;}
 .sec:last-child{border-bottom:none;}
 
 .foot{height: 216px;
-	background:url(../images/2.png) center bottom no-repeat;}
+	background:url(http://www.lanrenmb.com/wap/662/images/2.png) center bottom no-repeat;}
 
 .logo_title{
 	float:left;
