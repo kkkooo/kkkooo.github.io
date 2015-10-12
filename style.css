@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6, hr, p, ul, ol, li, button, input, textarea, th, td {margin: 0;padding: 0;}
+body,button, input, select, textarea {font: 12px/22px  Arial, "黑体", sans-serif;	color: #333333;}
+ul, ol{ list-style: none; padding:0;margin:0;}
+a { text-decoration: none;color:#006699;}
+a:hover { text-decoration: underline;color:#ff6633;}
+fieldset, img {border: none;}
+button, input, select, textarea {font-size: 100%; }
+table {border-collapse: collapse;	border-spacing: 0;}
+html { overflow-y: scroll; }
+img{display:block;}
+.clearfix:after {content: "";display: block;height: 0;clear: both;}
+.clearfix {zoom: 1;}
+.hidden,.headhidden{display:none;}
+
+
+.app_wrap{
+	min-width: 320px;
+	max-width: 640px;
+	width: 71.5%;
+	margin: 0 auto;
+}
+.app_head{
+	background:url(../images/bk_pg.png) 0 0 repeat-x;
+	height: 55px;
+	text-align: center;
+	padding: 3px 0;
+}
+.app_head img{display: inline;}
+.logo{text-align: right;margin:7.5% 7.5% 10.2% 0;}
+.logo_img{width: 125px;height:125px;background:url(../images/2.png) no-repeat -389px -131px;float: right;margin-left: 6%;}
+.logo_txt1{line-height: 33px;padding-top: 14px;color: #ff6b00;font-size: 30px;font-family: "Arial"}
+.logo_txt2{line-height: 70px;color: #333;font-size: 60px;font-family: "黑体";}
+.logo_txt3{line-height: 22px;padding-top: 14px;color: #e50d0d;font-size: 22px;font-family: "Arial"}
+.logo_txt4{line-height: 22px;padding-top: 14px;font-size: 22px;font-family: "Arial";float:left;}
+
+.btns{width:90%;margin:0 auto;}
+.btn{
+	width: 100%;height: 126px; overflow:hidden; display:block; display: -webkit-flex; display: flex;vertical-align: center;
+	margin-bottom: 30px;
+	background-color: #ff730d;
+	border-radius: 30px;
+	box-shadow: 0px 10px 0px 0px rgb( 243, 242, 242 );
+}
+.btn:hover{text-decoration: none;}
+.btn .icon{width:58px;height:77px;display:inline-block;margin:auto;margin-right:4.6%;float: left;margin-left:20.4%; margin-top:5%;background:url(../images/2.png) no-repeat -185px -334px;}
+.btn .btn_txt{height:61%;display:inline-block;margin:5% 0 0 0;float: left;}
+.btn .icon2{background-position: -185px -492px;}
+.btn .icon3{background-position: -185px -651px;}
+.btn .btn_txt1{display:block;padding-top:4.8%;color: #fff;font-size: 30px;line-height: 33px;}
+.btn .btn_txt2{display:block;color: #fff;font-size: 24px;line-height: 33px;}
+
+
+.def{width: 100%;height: 204px;display: flex;display: -webkit-flex;vertical-align: center;
+	border-bottom: 1px solid #e6e6e6;font-size: 30px;line-height: 37px;height: 37px;text-align: center;position: relative;}
+.tt{padding:0 20px;background-color: #fff;display: inline-block;margin-bottom: -20px;position: absolute;top:0;left: 50%;margin-left: -60px;}
+
+
+section{padding-top: 37px;}
+.sec{vertical-align: center;padding-bottom: 26px;margin-bottom: 26px;border-bottom: 1px solid #dedede;}
+.sec .icon{width:99px;height:99px;display:inline-block;margin:auto;margin-right:8.3%;float: left;margin-left:3%;background-image:url(../images/2.png);background-repeat:no-repeat;}
+.sec .btn_txt{height:61%;display:block;margin:auto 0;zoom:1;overflow: hidden;}
+.sec .btn_txt1{font-size: 48px;line-height: 47px;height: 47px;margin-bottom: 12px;color: #ff6b00;}
+.sec .btn_txt2{line-height: 30px;font-size: 24px;}
+.sec1 .icon{background-position:-106px -863px;}
+.sec2 .icon{background-position:-106px -1067px;}
+.sec3 .icon{background-position:-106px -1271px;}
+.sec4 .icon{background-position:-106px -1477px;}
+.sec5 .icon{background-position:-106px -1711px;}
+.sec6 .icon{background-position:-106px -1916px;}
+.sec:last-child{border-bottom:none;}
+
+.foot{height: 216px;
+	background:url(../images/2.png) center bottom no-repeat;}
+
+.logo_title{
+	float:left;
+	width:100%;
+	margin:20px 0 0 0;
+	text-align:center;
+	font:bold 16px/20px 'microsoft yahei';
+	color:#ff730d;
+	}
+
+@media screen and (max-width: 605px){
+.logo_txt2{font-size:50px; }
+.logo_title{font:bold 14px/20px 'microsoft yahei';}
+
+}
+@media screen and (max-width: 562px){
+	.logo_txt2{font-size:40px; }
+	.btn .btn_txt2{font-size: 18px;}
+	.sec .btn_txt1{font-size: 30px;}
+	section .sec .btn_txt2{font-size: 20px;}
+	.logo_title{font:bold 12px/20px 'microsoft yahei';}
+}
+@media screen and (max-width: 480px){
+.logo_txt2{font-size:30px; }
+.btn .icon{margin-left: 15%;}
+.logo_title{font:bold 10px/20px 'microsoft yahei';margin:5px auto;}
+
+}
