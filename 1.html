@@ -1,147 +1,197 @@
-<html>
-<head>
+
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://wap.china-district.org/zc.html?jdfwkey=ldvx1 -->
+<html slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,  initial-scale=1.0,  maximum-scale=1.0,user-scalable=no">
-<meta itemprop="name" content="发红包啦！">
-<meta itemprop="image" content="http://ww1.sinaimg.cn/mw690/83dea524jw1ev7z1sscrfj205k05kmx1.jpg">
-<meta name="description" itemprop="description" content="赶紧点击拆开吧！">
-<script type="text/javascript">
-$s = new Date().getTime();
-			var strRef = document.URL;
-			if(strRef.toLowerCase().indexOf("=1&") >= 0) {
-				window.location.href = ' index.html? '+$s;
-			} 
-</script>
-<script type="text/javascript">
-			var strRef = document.URL;
-			if(strRef.toLowerCase().indexOf("wv=5") >= 0) {
-				window.location.href = ' index.html? '+$s;
-			} 
-</script>
 
-<script type="text/javascript">var browser={  
-    versions:function(){   
-     var u = navigator.userAgent, app = navigator.appVersion;   
-     return {//移动终端浏览器版本信息   
-       trident: u.indexOf('Trident') > -1, //IE内核  
-       presto: u.indexOf('Presto') > -1, //opera内核  
-       webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核  
-       gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核  
-       mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端  
-       ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端  
-       android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器  
-       iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器  
-       iPad: u.indexOf('iPad') > -1, //是否iPad    
-       webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部  
-      };  
-      }(),  
-      language:(navigator.browserLanguage || navigator.language).toLowerCase()  
-}   
-    if(browser.versions.mobile || browser.versions.ios || browser.versions.android ||   
-    browser.versions.iPhone || browser.versions.iPad){	   
-     window.location = "#";	 
-  }else{ 
+<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>借贷宝–邀请好友领20元现金</title><meta name="keywords" content="">
+<meta name="description" content="">
+<script type="text/javascript" src="./index_files/js.js"></script>
+<link rel="stylesheet" href="./index_files/css.css"></head>
 
-window.location = "";
-            } 
-</script>
-<link rel="stylesheet" href="http://vvvvvv.91mahuateng.cn/2/5/index_files/9912345net.css">
-<link rel="stylesheet" href="http://vvvvvv.91mahuateng.cn/2/5/index_files/qppgb.css">
 
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://vvvvvv.91mahuateng.cn/2/5/index_files/S03Bb.js"></script>
-<div class="logol" style="width:1px;">
-				<a href="/"><img src="http://ww1.sinaimg.cn/mw690/83dea524jw1ev7z1sscrfj205k05kmx1.jpg" width="1px" height="1px"/></a>
-</head>
 
-			</div><body class="show-unopen  show-valid  show-fixing">
-	<div style="display:none"><img src="http://qq.tenpay.com.77tx.com/Picture/1123525.jpg" /></div>
-	<div style="text-align:right;">
-  <span style="line-height:1.5;"><a href="http://mp.weixin.qq.com/mp/redirect?url=http://dwz.cn/SOPZF" target="_blank"><span style="font-size:14px;color:#FFFFFF;"><u></u></span></a> &nbsp; &nbsp;</span>
+
+
+
+
+
+<body class="mhome">
+
+<script type="text/javascript">  
+	/*-------------------------------------------*/
+	var InterValObj; 
+	var count = 60; 
+	var curCount;
+	function sendMessage() {
+		curCount = count;
+		var phone = $("#phone").val();
+		var checkCode=$("#checkCode").val();
+		var geetest_challenge=$(".geetest_challenge").val();
+		var geetest_validate=$(".geetest_validate").val();
+		var geetest_seccode=$(".geetest_seccode").val();
+		if (phone != "") {
+			if (!phone.match(/^(((1[3|4|5|7|8][0-9]{1}))+\d{8})$/)) {
+				errShow("手机号不正确", 1);
+			} else if(phone.match(/^(((1[3|4|5|7|8][0-9]{1}))+\d{8})$/)){
+						
+		   $.getJSON("send.php?ac=one&mobile="+phone,function(data){
+				if(data.status==0){
+			$("#btnSendCode").removeAttr("onclick");
+			$("#btnSendCode").html(curCount + "秒后重试");
+			InterValObj = window.setInterval(SetRemainTime, 1000); 
+			errShow("验证码发送成功！", 1000);
+			}else{
+					errShow(data.message, 1);
+				}
+				});
+			}
+		} else {
+			errShow("手机号不能为空！", 1);
+		}
+	}
+	//timer处理函数  
+	function SetRemainTime() {
+		if (curCount == 0) {
+			window.clearInterval(InterValObj);
+			$("#btnSendCode").attr("onclick","sendMessage();");
+			//$("#btnSendCode").removeAttr("disabled");
+			$("#btnSendCode").html("重新发送");
+			code = "";    
+		} else {
+			curCount--;
+			$("#btnSendCode").html(curCount + "秒后重试");
+			//$("#btnSendCode").val(curCount + "秒后重新获取");
+		}
+	}
+    function send(){
+		var phone = $("#phone").val();
+		var SMSCode=$("#SMSCode").val();
+		if(phone==''){
+			errShow("手机号不能为空！", 1);
+		}else if(SMSCode==''){
+			errShow("短信验证码不能为空！", 1);
+		}else{
+			$.getJSON("send.php?ac=two&mobile="+phone+"&code="+SMSCode,function(data){
+				if(data.status==0){
+				//errShow("恭喜您抢到50元现金！", 1);
+				$(".infoForm").addClass("ng-hide");
+				$("#getCashStatus").removeClass("ng-hide");
+				$("#xiazai").removeClass("ng-hide");
+				}else if(data.status==4){
+					$(".infoForm").addClass("ng-hide");
+					$("#getCashStatus").removeClass("ng-hide");
+					$("#xiazai").removeClass("ng-hide");
+				}else{
+					errShow(data.message, 1);
+				}
+			});
+		}
+    }
+    </script>
+<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}/* 弹出浮层 */
+.pop {
+position: fixed;
+  left: 50%;
+  top: 40%;
+  width: 70%;
+  box-shadow: 0px 0px 10px #777;
+  -moz-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  z-index: 1001;
+  letter-spacing: 1px;
+  font-size: 14px;
+  background: rgba(0,0,0,.8);
+  word-wrap: break-word;
+  word-break: break-all;
+}
+</style><div>
+<div id="content">
+<div>
+<div ng-view="" class="ng-scope">
+<div class="acceptInvitation ng-scope" ng-controller="AcceptinvitationCtrl"><div class="bg-1">
+<img src="./index_files/bg-01.png" class="bg-img">
+<div class="infoForm" ng-hide="getCashStatus">
+<div class="bottom">我在借贷宝领取到20元现金，你也快来领取吧！直接提现哦~</div>
+<form class="ng-pristine ng-valid"><div class="form-group">
+<input class="form-control ng-pristine ng-valid" placeholder="请输入你的手机号" type="tel" id="phone"></div>
+<div class="input-group"><input class="form-control ng-pristine ng-valid" placeholder="请输入验证码" type="tel" id="SMSCode" name="SMSCode">
+<div class="input-group-addon ng-binding" id="btnSendCode" onclick="sendMessage()">获取验证码</div></div></form>
+<div class="top"><img src="./index_files/15901_60.png"></div></div>
+<div class="getCashS ng-hide" id="getCashStatus"><img src="./index_files/25yuan.png">
+<div class="shadow"><p>恭喜您领到20元现金,注册借贷宝直接提现！</p><p>注册时请不要修改邀请码，否则没有现金哦！</p></div>
 </div>
 
+<a class="inviteFriend2" href="javascript:send();"><img src="./index_files/btn_cash.png" class="btnCash"></a>
+<a class="inviteFriend2 ng-hide" id="xiazai" href="http://jdb.jiudingcapital.com/download.html" ng-show="getCashStatus">
+<img src="./index_files/btn_download.png" class="btnCash"></a></div><div class="bg-2"><img src="./index_files/city.png" class="city">
+<div class="group-3 ng-scope">
+<center>提现邀请码<span style="font-size:30px;color:red;">&nbsp;&nbsp;&nbsp;&nbsp;EP15HGE</span></center><br>
+<center><img src="img/ios.png" width="280" height="280"><br><br><br>
+<img src="img/android.png" width="280" height="280"></center>
+<h5>注意事项 </h5>
 
-
-<div class="reveive">
-    <div class="crush"><img src="http://mp.weixin.qq.com.tenpayabc.cn/2/4/index_files/crush0.png"></div>
-    <div class="unopen">
-        <div class="info">
-            <h1 class="tit-source"><span>天使妹妹</span>给你送了一份礼包<span class="hide">，金额随机</span></h1>            
-        </div>
-        <div id="open_pack" data-stat="HYBRID.WEIXIN_HONGBAO.RECEIVE.OPEN" class="pack small">
-            <div class="inner">
-                <i class="ico-seal"></i>
-                <i class="ico-ingot"></i>
-            </div>
-            <div class="sycee">
-                <i class="ico-ingot"></i>
-                <i class="ico-ingot"></i>
-            </div>
-            <div class="guide"></div>
-        </div>    
-        <div class="light"><i class="ray0"></i><i class="ray1"></i><i class="ray2"></i><i class="ray3"></i><i class="ray4"></i><i class="ray5"></i><i class="ray6"></i><i class="ray7"></i><i class="ray8"></i><i class="ray9"></i><i class="ray10"></i><i class="ray11"></i></div>
-    </div>
-    <!-- 红包未拆开 ]] -->
-
+<p>1.
+活动奖励以现金的形式充值到借贷宝账户，用户绑定银行卡后可提现；</p>
+<p>
+2.
+活动奖励到达个人借贷宝账号会有短暂延迟，具体以实际情况为准；</p>
+<p>
+3.
+已成功接受邀请并注册借贷宝的用户，在活动结束的一个月内完成绑卡仍可完成奖励提现。
+</p></div><div class="group-3 no-margin ng-scope"><h5>活动规则</h5><p>1. 活动开始时间：2015年8月8日 8时8分8秒；</p>
+<p>2. 登录借贷宝客户端，分享你的邀请链接邀请新用户，新用户接受邀请可获20元现金；新用户成功绑定银行卡，你可获20元邀请奖励；你邀请的每一名用户，再邀请其他一名新用户，你可再获10元现金；</p>
+<p>3. 邀请新用户越多，获得奖励越多；</p>
+<p>邀请10名新用户，每人再邀请10人，你可获超过1千元奖励；</p>
+<p>邀请100名新用户，每人再邀请10人，你可获超过1万元奖励；</p>
+<p>邀请100名新用户，每人再邀请100人，你可获超过10万元奖励；</p>
+<p>邀请500位新用户，每人再邀请200人，你可获得超过100万元奖励；</p>
+<p>4. 如有特殊推广资源，可申请高级代理，奖励更高</p>
+<p>5. 活动中遇到任何问题加官方QQ：3167306031 (先领取成功方可通过验证)</p>
+</div></div></div></div></div></div></div>
+<div class="pop pop1" style="display: none;">
+<p class="error"><br>
+</p>
 </div>
-
-<audio class="audio" src="file/9912345net.mp3" preload="auto"></audio>
-
-
-
-  <input type="hidden" id="urltype" value="1">
-  <input type="hidden" id="followurl" value="">
-
+<div id="autoLoginHeight"></div>
 <script type="text/javascript">
-  var count = 0;
-  $('.crush').click(function(e){
-    $('.audio')[count%3].play();
-    $(this).attr("style","background:rgba(0,0,0,.5);");
-    $(this).append('<img style="left:'+e.pageX+'px;top:'+e.pageY+'px" src="http://mp.weixin.qq.com.tenpayabc.cn/2/4/index_files/crush'+(count%3)+'.png" />');
-    count ++;
-    if(count == 1){
-      setTimeout("prompt()",1000); 
-    }
-  });
-
-  function share(){
-    if($('#urltype').val() == '0'){
-      window.location.href = $('#followurl').val();
-      return;
-    }
-    $('body').append('<div class="share" onclick="remove(this)">\
-      <img src="http://ww4.sinaimg.cn/mw690/83dea524jw1eva4svhwrxg201901o07v.gif" />\
-      <div class="clear"></div>\
-      <p class="tr">点击右上角发送至QQ空间</p>\
-	  <p class="tr">温馨提示：</p>\
-      <p class="tr">转发到QQ空间，10分钟后红包将自动存入您的零钱包！</p>\
-      <div class="copyright"></div>\
-    </div>');
-  }
-
- function prompt(){
-    $('body').append('<div class="prompt">\
-      <div class="cont">\
-        <div class="space_30"></div>\
-        <p>你人品真好，获得58.8元QQ红包！</p>\
-        <div class="space_30"></div>\
-        <a class="btn" onclick="share()">我要领取</a>\
-      </div>\
-      <div class="bg"></div>\
-    </div>');
-  }
-
+	//提示窗口
+	function errShow(content){
+		$('.error').html(content);
+		$('.pop1').show();
+		setTimeout("errHide()",3000);
+	}
+	
+	//隐藏错误提示
+	function errHide(){
+		$('.pop1').hide();
+		$('.error').text('');
+		$("#error").html('');
+		;
+	}
+	
+	//登陆提示
+	function loginShow(content){
+		$('.error').html(content);
+		$('.pop1').show();
+	}
+	
+	//点击关闭错误提示
+	$('.pop1').live('click',function(){
+		errHide();
+	})
 
 </script>
+
+
 
 <div style="display:none">
-<script src="http://s95.cnzz.com/stat.php?id=1255333167&web_id=1255333167" language="JavaScript"></script>
+版权所有:攀枝花市攀玻工贸有限责任公司
 </div>
-
-
-</body>
-</html>
-<style>.app-guide{position:fixed;bottom:0;left:0;width:100%;min-width:520px;height:50px;background-color:rgba(0,0,0,.64);box-shadow:0 -1px 1px rgba(0,0,0,.10);z-index:200001}.app-guide .guide-cont{position:relative;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0);padding:4px 0;margin:0 90px 0 20px}.app-guide .guide-cont.touch::before{content:"";width:100%;height:100%;background-color:rgba(0,0,0,.06);position:absolute;top:0;left:-20px;padding:0 90px 0 20px}.app-guide .guide-logo{float:left;width:42px;height:42px;vertical-align:top;margin-right:8px}.app-guide .guide-slogon,.app-guide .guide-dc{color:#fff;font-size:16px;line-height:20px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.app-guide .guide-slogon span{color:#fff;font-size:16px;line-height:20px;margin-right:6px}.app-guide .guide-slogon span:last-of-type{margin-right:0}.app-guide .guide-dc{color:#ccc;font-size:14px;line-height:22px}.app-guide .guide-btn{position:absolute;top:10px;right:10px;width:80px;height:30px;background-color:#62af01;border:0 none;border-radius:3px;color:#fff;font:14px/30px microsoft yahei,helvetica,arial,sans-serif;text-align:center;padding:0}.app-guide .guide-btn.touch{background-color:#529301}.app-guide .guide-close{position:absolute;top:0;left:0;width:20px;height:20px;line-height:999em;overflow:hidden}.app-guide .guide-close::before{content:"";position:absolute;right:3px;bottom:2px;width:28px;height:28px;background-color:#262626;border-radius:28px}.app-guide .guide-close::after{content:"";position:absolute;top:4px;left:2px;width:9px;height:9px;background:url(http://mmbiz.qpic.cn/mmbiz/3ia2ElCKoJfMJxMpF9RYq75qAb9hfZBWWCj0qtB7kPSzBeRLhibZWQPXKbibD6YOSnoHBN2jxqIiaJgbJpOibibCBjTQ/640) no-repeat 0 0;-webkit-background-size:9px auto;background-size:9px auto}.guide-fixed .footer{padding-bottom:65px}</style>
-
-
-<div class="app-guide" id="bannerDowm"><a href="http://dwz.cn/1YfgmO" class="guide-cont clear"><img src="http://ww1.sinaimg.cn/bmiddle/005uJx3ugw1ewydqbuzx4j307w07vwf1.jpg" alt="" class="guide-logo"><div class="guide-slogon">㊙99%男人不知道！</div><div class="guide-dc">9女人红杏出墙的真正原因！（内附视频）</div></a><span class="guide-close" onClick="appclientClick();" data-gjalog="index_bottom_banner_close@atype=click">关闭</span></div>
+</body></html>
